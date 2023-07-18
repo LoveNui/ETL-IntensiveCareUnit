@@ -114,18 +114,19 @@ Before starting NiFi, double-check that all information mentioned in the **proce
 By ensuring the accuracy of these configurations, you guarantee that NiFi can smoothly process data from Kafka and send it to MongoDB as intended. Double-check these settings to avoid potential issues during the ETL process.
 
 ## Folder Structure
-. 
-├── Assets **(Store Images)** 
-├── Data/ 
-	│ └── kafka **(Kafka Data folder)** 
-├── nifi **(Nifi Configuration folder)**/ 
-	│ └── scripts **(Scripts used on ETL process)**/ 
-				│ ├── addstatus.py 
-				│ └── formatdata.py 
-├── nifi_registry **(Nifi Registry Configurtion Folder)**/ 
-	│ └── database 
-├── README.md 
-├── docker-compose.yml 
-├── intensivecareunitflow.xml **(Nifi Flow Template)** 
-├── mockdata.json **(All data generated on Mocraroo)** 
-└── nativequery_metabase.md **(Native queries used to create questions on Metabase)**
+
+    . 
+    ├── Assets **(Store Images)** 
+    ├── Data/ 
+    	│ └── kafka **(Kafka Data folder)** 
+    ├── nifi **(Nifi Configuration folder)**/ 
+    	│ └── scripts **(Scripts used on ETL process)**/ 
+    				│ ├── addstatus.py 
+    				│ └── formatdata.py 
+    ├── nifi_registry **(Nifi Registry Configurtion Folder)**/ 
+    	│ └── database 
+    ├── README.md 
+    ├── docker-compose.yml 
+    ├── intensivecareunitflow.xml **(Nifi Flow Template)** 
+    ├── mockdata.json **(All data generated on Mocraroo)** 
+    └── nativequery_metabase.md **(Native queries used to create questions on Metabase)**
