@@ -10,28 +10,29 @@ This query focuses on fetching the latest blood pressure diastolic reading for t
 2.  **$sort**: Sorts the filtered data in descending order based on the "timestamp" field, ensuring we get the latest record first.
 3.  **$limit**: Limits the result to only one record, i.e., the most recent entry for Bed B001.
 4.  **$project**: Projects the result, excluding the default MongoDB "_id" field and renaming the "bp_diastolic" field to "blood pressure diastolic".
+5. 
+
 
     [
-    
-    {
-    "$match": {
-    "bed_id": "B001"
-    }
-    },
-    {
-    "$sort": {
-    "timestamp": -1
-    }
-    },
-    {
-    "$limit": 1
-    },
-    {
-    "$project": {
-    "_id": 0,
-    "bp_diastolic": "$bp_diastolic"
-    }
-    }
+      {
+        "$match": {
+          "bed_id": "B001"
+        }
+      },
+      {
+        "$sort": {
+          "timestamp": -1
+        }
+      },
+      {
+        "$limit": 1
+      },
+      {
+        "$project": {
+          "_id": 0,
+          "bp_diastolic": "$bp_diastolic"
+        }
+      }
     ]
 
 ### Query 2: Retrieve Oxygen Level for Bed B002
@@ -42,49 +43,28 @@ This query focuses on obtaining the latest oxygen level reading for the patient 
 2.  **$sort**: Sorts the filtered data in descending order based on the "timestamp" field, ensuring we get the latest record first.
 3.  **$limit**: Limits the result to only one record, i.e., the most recent entry for Bed B002.
 4.  **$project**: Projects the result, excluding the default MongoDB "_id" field and renaming the "oxygen_level" field to "oxygen level".
-
-  
+5. 
 
     [
-    
-    {
-    
-    "$match": {
-    
-    "bed_id": "B002"
-    
-    }
-    
-    },
-    
-    {
-    
-    "$sort": {
-    
-    "timestamp": -1
-    
-    }
-    
-    },
-    
-    {
-    
-    "$limit": 1
-    
-    },
-    
-    {
-    
-    "$project": {
-    
-    "_id": 0,
-    
-    "oxygen_level": "$oxygen_level"
-    
-    }
-    
-    }
-    
+	    {
+	    "$match": {
+	    "bed_id": "B002"
+		    }
+	    },
+	    {
+	    "$sort": {
+	    "timestamp": -1
+		    }
+	    },
+	    {
+	    "$limit": 1
+	    },
+	    {
+	    "$project": {
+	    "_id": 0,
+	    "oxygen_level": "$oxygen_level"
+		    }
+	    }
     ]
 
 ### Query 3: Retrieve Temperature for Bed B001
@@ -95,47 +75,52 @@ This query is similar to the first two, but it focuses on retrieving the latest 
 2.  **$sort**: Sorts the filtered data in descending order based on the "timestamp" field, ensuring we get the latest record first.
 3.  **$limit**: Limits the result to only one record, i.e., the most recent entry for Bed B001.
 4.  **$project**: Projects the result, excluding the default MongoDB "_id" field and renaming the "temperature" field to "temperature".
+5. 
 
     [
-    
-    {
-    
-    "$match": {
-    
-    "bed_id": "B001"
-    
-    }
-    
-    },
-    
-    {
-    
-    "$sort": {
-    
-    "timestamp": -1
-    
-    }
-    
-    },
-    
-    {
-    
-    "$limit": 1
-    
-    },
-    
-    {
-    
-    "$project": {
-    
-    "_id": 0,
-    
-    "temperature": "$temperature"
-    
-    }
-    
-    }
-    
+      {
+        "$match": {
+          "bed_id": "B001"
+        }
+      },
+      {
+        "$sort": {
+          "timestamp": -1
+        }
+      },
+      {
+        "$limit": 1
+      },
+      {
+        "$project": {
+          "_id": 0,
+          "temperature": "$temperature"
+        }
+      }
     ]
 
+### Query 4: Retrieve Heartbeat and Timestamp for Bed B001
+
+This query is designed to extract the heartbeat and corresponding timestamp data for the patient in Bed B001. It consists of the following steps:
+
+1.  **$match**: Filters the data to include only records with "bed_id" equal to "B001" (Bed B001).
+2.  **$project**: Projects the result, excluding the default MongoDB "_id" field, and includes "heartbeat" and "timestamp" fields with their original values.
+
+The purpose of this query is to obtain a historical record of heartbeats and their corresponding timestamps for a patient occupying Bed B001. By executing this query in Metabase, healthcare professionals can closely monitor the patient's heartbeat trends over time, aiding in early detection of any irregularities or anomalies in their heart health.
+
+
+    [
+      {
+        "$match": {
+          "bed_id": "B001",
+        }
+      },
+      {
+        "$project": {
+          "_id": 0,
+          "heartbeat": "$heartbeat",
+          "timestamp": "$timestamp"
+        }
+      }
+    ]
 These Metabase native queries allow us to quickly retrieve specific data points from MongoDB, enabling us to monitor and analyze patient vitals in real-time. The combination of Metabase and MongoDB provides us with valuable insights for better patient care and management in the ICU.
